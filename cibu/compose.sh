@@ -46,11 +46,11 @@ up(){
 
 update(){
     remove $@
-    up dummy dummy -d --force-recreate --remove-orphans --no-deps $3
+    up dummy dummy -d --force-recreate --remove-orphans --no-deps ${@:3}
 }
 
 remove(){
-    ssh $TARGET_HOST "cd $TARGET_PATH; docker-compose stop $3; docker-compose rm -f $3"
+    ssh $TARGET_HOST "cd $TARGET_PATH; docker-compose stop ${@:3}; docker-compose rm -f ${@:3}"
 }
 
 cleanup(){
