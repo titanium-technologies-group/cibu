@@ -54,7 +54,7 @@ remove(){
 }
 
 cleanup(){
-    ssh $TARGET_HOST "docker system prune -a -f; rm -rf /var/lib/docker/aufs/diff/*-removing"
+    ssh $TARGET_HOST "docker system prune -a -f --volumes; rm -rf /var/lib/docker/aufs/diff/*-removing"
 }
 
 show_help(){
