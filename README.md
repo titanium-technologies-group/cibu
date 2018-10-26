@@ -28,6 +28,12 @@ release `[version]` `[url]`
 
 ### compose
 
+supported env vars:
+
+* `TARGET_HOST` - ssh host (with user, if needed), eg: 192.168.0.1, ubuntu@server.google.com
+* `TARGET_PORT` - ssh port. Default is 22
+* `TARGET_PATH` - path on target host, where compose file should be placed
+
 docker and docker-compose related commands
 
 login `<login>` `<password>` `<registry>`
