@@ -45,12 +45,10 @@ deploy(){
         exit 1
     fi
     sed -i "s/RELEASE_PLACEHOLDER/${RELEASE}/g" $3
-    CONTENT=$(cat $3)
     RELEASE=$4
-    ssh $TARGET_HOST -p ${TARGET_PORT:-22} "
-    mkdir -p $TARGET_PATH;
-    cd $TARGET_PATH;
-    printf \"$CONTENT\" > docker-compose-$RELEASE.yml;
+    ssh $TARGET_HOST -p ${TARGET_PORT:-22} "mkdir -p $TARGET_PATH"
+    scp -P ${TARGET_PORT:-22} $3 $TARGET_HOST:$TARGET_PATH/docker-compose-$RELEASE.yml
+    ssh $TARGET_HOST -p ${TARGET_PORT:-22} "cd $TARGET_PATH;
     ln -sf docker-compose-$RELEASE.yml docker-compose.yml;
     docker-compose pull"
 }
