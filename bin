@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#PREFIX="/opt/cibu"
+PREFIX="/opt/cibu"
 
 
 # Set command
